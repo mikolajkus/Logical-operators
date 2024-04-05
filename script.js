@@ -45,27 +45,35 @@ console.log(isTheFirstNumberCloseToTheSecondNumber(9,5, 0));
 // There will always be 2 values provided.
 
 function isOnlyOneOfThemTruthy(firstValue, secondValue) {
-    const falsyValue = [false, 0, "", undefined, null, NaN];
-    const isFirstFalsy = falsyValue.includes(firstValue);
-    const isSecondFalsy = falsyValue.includes(secondValue);
-    if (isFirstFalsy && !isSecondFalsy) {
-        return true;
-    }
-    if (isSecondFalsy && !isFirstFalsy) {
+    if (firstValue && !secondValue) {
         return true;
     }
     return false;
 }
 
 function isEitherOneOfThemTruthy(firstValue, secondValue) {
-    const falsyValue = [false, 0, "", undefined, null, NaN];
-    const isFirstFalsy = falsyValue.includes(firstValue);
-    const isSecondFalsy = falsyValue.includes(secondValue);
-    if (isFirstFalsy && isSecondFalsy) {
+    if (!firstValue && !secondValue) {
         return false;
     }
     return true;
 }
 
-console.log(isOnlyOneOfThemTruthy("Bye", 12));
-console.log(isEitherOneOfThemTruthy(12, "Hi"));
+console.log(isOnlyOneOfThemTruthy("Bye"));
+console.log(isEitherOneOfThemTruthy(0, 2));
+
+// 4.Create a function called _if which takes 3 arguments: a value bool and 2 functions (which do not take any parameters): func1 and func2
+// When bool is truthy, func1 should be called, otherwise call the func2.
+
+function firstFunction() {
+    console.log('True')}
+function secondFunction() {
+    console.log('False')}
+
+function isBoolTruthy(boolValue, firstFunction, secondFunction) {
+    if (boolValue) {
+        return firstFunction();
+    }
+    return secondFunction();
+}
+
+isBoolTruthy(true, firstFunction, secondFunction);
