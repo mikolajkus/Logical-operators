@@ -21,7 +21,7 @@ console.log(isAlarmSet(true, false));
 // Assume: margin >= 0
 // Tip: Some languages have a way to make parameters optional.
 
-function isTheFirstNumberCloseTheToSecondNumber(firstNumber, secondNumber, marginParameter = 0) {
+function isTheFirstNumberCloseToTheSecondNumber(firstNumber, secondNumber, marginParameter = 0) {
     const absoluteValueOfNumbers = Math.abs(firstNumber - secondNumber);
     if (absoluteValueOfNumbers <= marginParameter) {
         return 0;
@@ -34,4 +34,13 @@ function isTheFirstNumberCloseTheToSecondNumber(firstNumber, secondNumber, margi
     }
 }
 
-console.log(isTheFirstNumberCloseTheToSecondNumber(9,5, 0));
+console.log(isTheFirstNumberCloseToTheSecondNumber(9,5, 0));
+
+// 3.You need to implement two functions, xor and or, that replicate the behaviour of their respective operators:
+// xor = Takes 2 values and returns true if, and only if, one of them is truthy.
+// or = Takes 2 values and returns true if either one of them is truthy.
+// When doing so, you cannot use the or operator: ||.
+
+// Not all input will be booleans - there will be truthy and falsey values [the latter including also empty strings and empty arrays]
+// There will always be 2 values provided.
+
