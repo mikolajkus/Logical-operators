@@ -21,10 +21,7 @@ console.log(isAlarmSet(true, false));
 // Assume: margin >= 0
 // Tip: Some languages have a way to make parameters optional.
 
-function isFirstNumberIsCloseToSecondNumber(firstNumber, secondNumber, marginParameter) {
-    if (marginParameter === undefined) {
-        marginParameter = 0;
-    }
+function isTheFirstNumberCloseTheToSecondNumber(firstNumber, secondNumber, marginParameter = 0) {
     const absoluteValue = Math.abs(firstNumber - secondNumber);
     if (absoluteValue <= marginParameter) {
         return 0;
@@ -37,4 +34,4 @@ function isFirstNumberIsCloseToSecondNumber(firstNumber, secondNumber, marginPar
     }
 }
 
-console.log(isFirstNumberIsCloseToSecondNumber(9,5, 0));
+console.log(isTheFirstNumberCloseTheToSecondNumber(9,5, 0));
