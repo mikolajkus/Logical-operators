@@ -119,3 +119,23 @@ function getTheFloorInTheEuropeanSystem(americanFloorNumber) {
 }
 
 console.log(getTheFloorInTheEuropeanSystem(14));
+
+// 7. In this kata, your task is to implement an extended version of the famous rock-paper-scissors game.
+
+function extendedVersionOfRockPaperScissors(playerOne, playerTwo){
+    if(playerOne === playerTwo) {
+        return 'Draw!';
+    }
+    if(
+        (playerOne === 'rock' && (playerTwo === 'scissors' || playerTwo === 'lizard')) ||
+        (playerOne === 'scissors' && (playerTwo === 'paper' || playerTwo === 'lizard')) ||
+        (playerOne === 'lizard' && (playerTwo === 'paper' || playerTwo === 'spock')) ||
+        (playerOne === 'paper' && (playerTwo === 'spock' || playerTwo === 'rock')) ||
+        (playerOne === 'spock' && (playerTwo === 'rock' || playerTwo === 'scissors'))
+    ) {
+        return 'Player 1 Won!';
+    }
+    return 'Player 2 Won!';
+}
+
+console.log(extendedVersionOfRockPaperScissors('rock', 'paper'));
