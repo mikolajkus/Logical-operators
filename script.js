@@ -3,20 +3,20 @@
 // The function should return true if you are employed and not on vacation (because these are the circumstances under which you need to set an alarm).
 // It should return false otherwise.
 
-function isSetAlarm(isEmployed, isOnAVacation){
-    return isEmployed && !isOnAVacation;
+function isAlarmSet(isEmployed, isOnVacation){
+    return isEmployed && !isOnVacation;
 }
 
-console.log(isSetAlarm(true, false));
+console.log(isAlarmSet(true, false));
 
 // 2. Create a function close_compare that accepts 3 parameters: a, b, and an optional margin.
-// The function should return whether a is lower than, close to, or higher than b.
+// The function should return whether 'a' is lower than, close to, or higher than b.
 // Please note the following:
-// When a is close to b, return 0.
-// For this challenge, a is considered "close to" b if margin is greater than or equal to the absolute distance between a and b.
+// When 'a' is close to b, return 0.
+// For this challenge, 'a' is considered "close to" b if margin is greater than or equal to the absolute distance between a and b.
 // Otherwise...
-// When a is less than b, return -1.
-// When a is greater than b, return 1.
+// When 'a' is less than b, return -1.
+// When 'a' is greater than b, return 1.
 // If margin is not given, treat it as if it were zero.
 // Assume: margin >= 0
 // Tip: Some languages have a way to make parameters optional.
