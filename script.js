@@ -44,3 +44,28 @@ console.log(isTheFirstNumberCloseToTheSecondNumber(9,5, 0));
 // Not all input will be booleans - there will be truthy and falsey values [the latter including also empty strings and empty arrays]
 // There will always be 2 values provided.
 
+function isOnlyOneOfThemTruthy(firstValue, secondValue) {
+    const falsyValue = [false, 0, "", undefined, null, NaN];
+    const isFirstFalsy = falsyValue.includes(firstValue);
+    const isSecondFalsy = falsyValue.includes(secondValue);
+    if (isFirstFalsy && !isSecondFalsy) {
+        return true;
+    }
+    if (isSecondFalsy && !isFirstFalsy) {
+        return true;
+    }
+    return false;
+}
+
+function isEitherOneOfThemTruthy(firstValue, secondValue) {
+    const falsyValue = [false, 0, "", undefined, null, NaN];
+    const isFirstFalsy = falsyValue.includes(firstValue);
+    const isSecondFalsy = falsyValue.includes(secondValue);
+    if (isFirstFalsy && isSecondFalsy) {
+        return false;
+    }
+    return true;
+}
+
+console.log(isOnlyOneOfThemTruthy("Bye", 12));
+console.log(isEitherOneOfThemTruthy(12, "Hi"));
