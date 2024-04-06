@@ -45,7 +45,10 @@ console.log(isTheFirstNumberCloseToTheSecondNumber(9,5, 0));
 // There will always be 2 values provided.
 
 function isOnlyOneOfThemTruthy(firstValue, secondValue) {
-    if (firstValue && !secondValue) {
+    if (
+        (firstValue && !secondValue) ||
+        (!firstValue && secondValue)
+    ) {
         return true;
     }
     return false;
