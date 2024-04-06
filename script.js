@@ -69,8 +69,8 @@ function firstFunction() {
 function secondFunction() {
     console.log('False')}
 
-function isBoolTruthy(boolValue, firstFunction, secondFunction) {
-    if (boolValue) {
+function isBoolTruthy(booleanValue, firstFunction, secondFunction) {
+    if (booleanValue) {
         return firstFunction();
     }
     return secondFunction();
