@@ -1,23 +1,23 @@
 // 7. In this kata, your task is to implement an extended version of the famous rock-paper-scissors game.
 
-function willRockWin(player) {
-    return player === 'scissors' || player === 'lizard';
+function willRockWin(opponent) {
+    return opponent === 'scissors' || opponent === 'lizard';
 }
 
-function willScissorsWin(player) {
-    return player === 'paper' || player === 'lizard';
+function willScissorsWin(opponent) {
+    return opponent === 'paper' || opponent === 'lizard';
 }
 
-function willLizardWin(player) {
-    return player === 'paper' || player === 'spock';
+function willLizardWin(opponent) {
+    return opponent === 'paper' || opponent === 'spock';
 }
 
-function willPaperWin(player) {
-    return player === 'spock' || player === 'rock';
+function willPaperWin(opponent) {
+    return opponent === 'spock' || opponent === 'rock';
 }
 
-function willSpockWin(player) {
-    return player === 'scissors' || player === 'rock';
+function willSpockWin(opponent) {
+    return opponent === 'scissors' || opponent === 'rock';
 }
 
 function extendedVersionOfRockPaperScissors(playerOne, playerTwo){
@@ -30,15 +30,15 @@ function extendedVersionOfRockPaperScissors(playerOne, playerTwo){
         return 'Draw!';
     }
     if (
-        (playerOne && rockWin) ||
-        (playerOne && scissorsWin) ||
-        (playerOne && lizardWin) ||
-        (playerOne && paperWin) ||
-        (playerOne && spockWin)
+        (playerOne === 'rock' && rockWin) ||
+        (playerOne === 'scissors' && scissorsWin) ||
+        (playerOne === 'lizard' && lizardWin) ||
+        (playerOne === 'paper' && paperWin) ||
+        (playerOne === 'spock' && spockWin)
     ) {
         return 'Player 1 Won!';
     }
     return 'Player 2 Won!';
 }
 
-console.log(extendedVersionOfRockPaperScissors('rock', 'paper'));
+console.log(extendedVersionOfRockPaperScissors('scissors', 'rock'));
