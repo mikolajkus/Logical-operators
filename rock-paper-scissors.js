@@ -21,24 +21,19 @@ function willSpockWin(opponent) {
 }
 
 function extendedVersionOfRockPaperScissors(playerOne, playerTwo){
-    const rockWin = willRockWin(playerTwo);
-    const scissorsWin = willScissorsWin(playerTwo);
-    const lizardWin = willLizardWin(playerTwo);
-    const paperWin = willPaperWin(playerTwo);
-    const spockWin = willSpockWin(playerTwo);
     if (playerOne === playerTwo) {
         return 'Draw!';
     }
     if (
-        (playerOne === 'rock' && rockWin) ||
-        (playerOne === 'scissors' && scissorsWin) ||
-        (playerOne === 'lizard' && lizardWin) ||
-        (playerOne === 'paper' && paperWin) ||
-        (playerOne === 'spock' && spockWin)
+        (playerOne === 'rock' && willRockWin(playerTwo)) ||
+        (playerOne === 'scissors' && willScissorsWin(playerTwo)) ||
+        (playerOne === 'lizard' && willLizardWin(playerTwo)) ||
+        (playerOne === 'paper' && willPaperWin(playerTwo)) ||
+        (playerOne === 'spock' && willSpockWin(playerTwo))
     ) {
         return 'Player 1 Won!';
     }
     return 'Player 2 Won!';
 }
 
-console.log(extendedVersionOfRockPaperScissors('scissors', 'rock'));
+console.log(extendedVersionOfRockPaperScissors('rock', 'scissors'));
