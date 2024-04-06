@@ -65,9 +65,11 @@ console.log(isEitherOneOfThemTruthy(0, 2));
 // When bool is truthy, func1 should be called, otherwise call the func2.
 
 function firstFunction() {
-    console.log('True')}
+    console.log('True')
+}
 function secondFunction() {
-    console.log('False')}
+    console.log('False')
+}
 
 function isBoolTruthy(booleanValue, firstFunction, secondFunction) {
     if (booleanValue) {
