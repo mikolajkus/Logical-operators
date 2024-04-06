@@ -110,7 +110,7 @@ function getTheFloorInTheEuropeanSystem(americanFloorNumber) {
     if (americanFloorNumber <= 0) {
         return americanFloorNumber;
     }
-    if (americanFloorNumber >= 1 && americanFloorNumber <= 12) {
+    if (americanFloorNumber <= 12) {
         return americanFloorNumber - 1;
     }
     if (americanFloorNumber >= 14) {
