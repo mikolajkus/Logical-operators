@@ -24,12 +24,8 @@ function extendedVersionOfRockPaperScissors(playerOne, playerTwo){
     if (playerOne === playerTwo) {
         return 'Draw!';
     }
-    if (willRockWin(playerTwo) ||
-        willScissorsWin(playerTwo) ||
-        willLizardWin() ||
-        willPaperWin() ||
-        willSpockWin()
-    ) {
+    if (willRockWin(playerTwo))
+     {
         return 'Player 1 Won!';
     }
     return 'Player 2 Won!';
