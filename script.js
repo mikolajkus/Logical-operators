@@ -87,16 +87,16 @@ isBoolTruthy(true, firstFunction, secondFunction);
 // Write a code that gives out the total amount for different days(d).
 
 function getTheTotalAmountForCarRental(dayNumber) {
-    const costPerDay = 40;
+    const costPerDay = 40 * dayNumber;
     const fiftyOff = 50;
     const twentyOff = 20;
     if (dayNumber >= 7) {
-        return costPerDay * dayNumber - fiftyOff;
+        return costPerDay - fiftyOff;
     }
     if (dayNumber >= 3) {
-        return costPerDay * dayNumber - twentyOff;
+        return costPerDay - twentyOff;
     }
-    return costPerDay * dayNumber;
+    return costPerDay;
 }
 
 console.log(getTheTotalAmountForCarRental(6));
