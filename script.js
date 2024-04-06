@@ -22,8 +22,8 @@ console.log(isAlarmSet(true, false));
 // Tip: Some languages have a way to make parameters optional.
 
 function isTheFirstNumberCloseToTheSecondNumber(firstNumber, secondNumber, marginParameter = 0) {
-    const absoluteValueOfNumbers = Math.abs(firstNumber - secondNumber);
-    if (absoluteValueOfNumbers <= marginParameter) {
+    const absoluteDistanceBetweenNumbers = Math.abs(firstNumber - secondNumber);
+    if (absoluteDistanceBetweenNumbers <= marginParameter) {
         return 0;
     }
     if (firstNumber < secondNumber) {
