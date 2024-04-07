@@ -125,7 +125,7 @@ function getTheFloorInTheEuropeanSystem(americanFloorNumber) {
 
 console.log(getTheFloorInTheEuropeanSystem(14));
 
-// 7. In next javascript file.
+// 7. In the rock-paper-scissors.js file.
 
 // 8. Write the isValidPassword function.
 // Make sure that the password is at least 8 characters long and contains at least one number and one uppercase letter.
@@ -134,7 +134,7 @@ function getLettersAmount(word) {
     return word.length;
 }
 
-function getCapitalLetter(word) {
+function getUppercaseLetter(word) {
     const uppercaseLetters =  /[A-Z]/g;
     const matchingResult = word.match(uppercaseLetters);
     if (matchingResult === null) {
@@ -143,7 +143,7 @@ function getCapitalLetter(word) {
     return matchingResult.length;
 }
 
-function getNumber (word) {
+function getNumber(word) {
     const numbers = /\d/g;
     const matchingResult = word.match(numbers);
     if (matchingResult === null) {
@@ -152,10 +152,12 @@ function getNumber (word) {
     return matchingResult.length;
 }
 
-function isValidPassword (password) {
+function isValidPassword(password) {
     return getLettersAmount(password) >= 8 &&
-        getCapitalLetter(password) >= 1 &&
+        getUppercaseLetter(password) >= 1 &&
         getNumber(password) >= 1;
 }
 
 console.log(isValidPassword('Password123'));
+
+// 9. In the getPasswordStrength.js file.
