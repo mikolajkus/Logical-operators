@@ -161,3 +161,40 @@ function isValidPassword(password) {
 console.log(isValidPassword('Password123'));
 
 // 9. In the getPasswordStrength.js file.
+
+// 10. Create the getTotalOrderCost function that returns the total cost of the order and accepts the following arguments:
+// - the base cost of the items
+// - whether the customer is a VIP member - they get a 5% discount
+// - how many loyalty points the customer wants to use - each one of them reduces the cost by a cent (the final cost should not be lower than $0)
+// - is the package going to be shipped internationally - shipping internationally costs $10 (otherwise, it costs $5)
+// Make sure to apply the VIP discount before the loyalty points. The VIP discount does not apply to shipping.
+
+function isVipSubscriptionActive(vipSubscription) {
+    if (vipSubscription === 'active') {
+        return 0.05;
+    }
+    return 0;
+}
+
+function getLoyaltyPoints(pointAmount) {
+    if (pointAmount) {
+        return pointAmount;
+    }
+    return 0;
+}
+
+function isShippedInternationally(shippingType) {
+    if (shippingType === 'international') {
+        return 10;
+    }
+    return 5;
+}
+
+function getTotalOrderCost(baseCost, vipMember, loyaltyPoints, shipping) {
+    const fivePercentDiscount = isVipSubscriptionActive(vipMember) * baseCost;
+    const costReduce = getLoyaltyPoints(loyaltyPoints) / 100;
+    const shippingType = isShippedInternationally(shipping);
+    return baseCost - fivePercentDiscount - costReduce + shippingType;
+}
+
+console.log(getTotalOrderCost(100,'',5, 'international'));
