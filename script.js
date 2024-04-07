@@ -153,14 +153,9 @@ function getNumber (word) {
 }
 
 function isValidPassword (password) {
-    if (
-        getLettersAmount(password) >= 8 &&
+    return getLettersAmount(password) >= 8 &&
         getCapitalLetter(password) >= 1 &&
-        getNumber(password) >= 1
-    ) {
-        return true;
-    }
-    return false;
+        getNumber(password) >= 1;
 }
 
 console.log(isValidPassword('Password123'));
