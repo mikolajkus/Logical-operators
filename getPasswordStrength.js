@@ -36,16 +36,16 @@ function getSpecialCharacter(word) {
 function getPasswordStrength (password) {
     let passwordStrength = 0;
     if (getLettersAmount(password) >= 8) {
-        passwordStrength++;
+        passwordStrength += 1;
     }
     if (getLowercaseLetter(password) >= 1) {
-        passwordStrength++;
+        passwordStrength += 1;
     }
     if (getUppercaseLetter(password) >= 1) {
-        passwordStrength++;
+        passwordStrength += 1;
     }
     if (getSpecialCharacter(password) >= 1) {
-        passwordStrength++;
+        passwordStrength += 1;
     }
     return passwordStrength;
 }
