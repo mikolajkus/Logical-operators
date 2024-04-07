@@ -124,3 +124,43 @@ function getTheFloorInTheEuropeanSystem(americanFloorNumber) {
 }
 
 console.log(getTheFloorInTheEuropeanSystem(14));
+
+// 7. In next javascript file.
+
+// 8. Write the isValidPassword function.
+// Make sure that the password is at least 8 characters long and contains at least one number and one uppercase letter.
+
+function getLettersAmount(word) {
+    return word.length;
+}
+
+function getCapitalLetter(word) {
+    const uppercaseLetters =  /[A-Z]/g;
+    const matchingResult = word.match(uppercaseLetters);
+    if (matchingResult === null) {
+        return 0;
+    }
+    return matchingResult.length;
+}
+
+function getNumber (word) {
+    const numbers = /\d/g;
+    const matchingResult = word.match(numbers);
+    if (matchingResult === null) {
+        return 0;
+    }
+    return matchingResult.length;
+}
+
+function isValidPassword (password) {
+    if (
+        getLettersAmount(password) >= 8 &&
+        getCapitalLetter(password) >= 1 &&
+        getNumber(password) >= 1
+    ) {
+        return true;
+    }
+    return false;
+}
+
+console.log(isValidPassword('Password123'));
