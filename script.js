@@ -192,9 +192,37 @@ function isShippedInternationally(shippingType) {
 
 function getTotalOrderCost(baseCost, vipMember, loyaltyPoints, shipping) {
     const fivePercentDiscount = isVipSubscriptionActive(vipMember) * baseCost;
-    const costReduce = getLoyaltyPoints(loyaltyPoints) / 100;
+    const costReduceThroughLoyaltyPoints = getLoyaltyPoints(loyaltyPoints) / 100;
     const shippingType = isShippedInternationally(shipping);
-    return baseCost - fivePercentDiscount - costReduce + shippingType;
+    return baseCost - fivePercentDiscount - costReduceThroughLoyaltyPoints + shippingType;
 }
 
 console.log(getTotalOrderCost(100,'',5, 'international'));
+
+// 11. Create the getTicketPrice function that returns the ticket price and accepts the following arguments:
+// - the base price of the ticket
+// - how many days are there until the show - buying tickets more than a month in advance provides a 10% discount
+// - is the show on the weekend - weekend shows are $15 more expensive
+// The discount applied if the tickets are bought a month in advance should decrease the $15 charged if the show plays on the weekend.
+
+function getDaysUntilTheShow(daysNumber) {
+    if (daysNumber > 30) {
+        return 0.10;
+    }
+    return 0;
+}
+
+function isTheShowOnTheWeekend(weekendShow) {
+    if (weekendShow === "yes") {
+        return 15;
+    }
+    return 0;
+}
+
+function getTicketPrice(basePrice, daysUntilTheShow, weekendShows) {
+    const tenPercentDiscount = getDaysUntilTheShow(daysUntilTheShow) * basePrice;
+    const showOnTheWeekend = basePrice + isTheShowOnTheWeekend(weekendShows);
+    return showOnTheWeekend - tenPercentDiscount;
+}
+
+console.log(getTicketPrice(100, 31, 'yes'));

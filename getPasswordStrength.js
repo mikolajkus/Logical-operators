@@ -50,4 +50,4 @@ function getPasswordStrength (password) {
     return passwordStrength;
 }
 
-console.log(getPasswordStrength('Password123'));
+console.log(getPasswordStrength('Password!'));
