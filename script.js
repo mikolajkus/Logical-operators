@@ -196,24 +196,27 @@ console.log(getTotalOrderCost(100, '', 5,  'international'));
 // - is the show on the weekend - weekend shows are $15 more expensive
 // The discount applied if the tickets are bought a month in advance should decrease the $15 charged if the show plays on the weekend.
 
-function getDaysUntilTheShow(daysNumber) {
+function getDiscountByNumberOfDays(daysNumber) {
     if (daysNumber > 30) {
         return 0.10;
     }
     return 0;
 }
 
-function isTheShowOnTheWeekend(weekendShow) {
-    if (weekendShow === "yes") {
+function getPriceIncreaseByTheShowOnTheWeekend(weekendShow) {
+    if (weekendShow === 'yes') {
         return 15;
     }
     return 0;
 }
 
 function getTicketPrice(basePrice, daysUntilTheShow, weekendShows) {
-    const tenPercentDiscount = getDaysUntilTheShow(daysUntilTheShow) * basePrice;
-    const showOnTheWeekend = basePrice + isTheShowOnTheWeekend(weekendShows);
-    return showOnTheWeekend - tenPercentDiscount;
+    const showOnTheWeekend = basePrice + getPriceIncreaseByTheShowOnTheWeekend(weekendShows);
+    const tenPercentDiscount = getDiscountByNumberOfDays(daysUntilTheShow) * basePrice;
+    if (weekendShows) {
+        return showOnTheWeekend - tenPercentDiscount;
+    }
+    return basePrice - tenPercentDiscount;
 }
 
 console.log(getTicketPrice(100, 31, 'yes'));
