@@ -203,15 +203,8 @@ function getDiscountByNumberOfDays(daysNumber) {
     return 0;
 }
 
-function getPriceIncreaseByTheShowOnTheWeekend(weekendShow) {
-    if (weekendShow === 'yes') {
-        return 15;
-    }
-    return 0;
-}
-
 function getTicketPrice(basePrice, daysUntilTheShow, weekendShows) {
-    const showOnTheWeekend = basePrice + getPriceIncreaseByTheShowOnTheWeekend(weekendShows);
+    const showOnTheWeekend = basePrice + 15;
     const tenPercentDiscount = getDiscountByNumberOfDays(daysUntilTheShow) * basePrice;
     if (weekendShows) {
         return showOnTheWeekend - tenPercentDiscount;
