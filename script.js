@@ -208,7 +208,7 @@ function getTicketPrice(basePrice, daysUntilTheShow, isWeekendShows) {
     const basePriceAfterTenPercentDiscount = basePrice - tenPercentDiscountOnBasePrice;
     const tenPercentDiscountOnFifteenDollarsCharged = 15 * getDiscountByNumberOfDays(daysUntilTheShow);
     const fifteenDollarsChargedAfterTenPercentDiscount = 15 - tenPercentDiscountOnFifteenDollarsCharged;
-    if (weekendShows) {
+    if (isWeekendShows) {
         return basePriceAfterTenPercentDiscount + fifteenDollarsChargedAfterTenPercentDiscount;
     }
     return basePrice - tenPercentDiscountOnBasePrice;
