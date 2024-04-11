@@ -180,12 +180,12 @@ function getShippedInternationally(shippingType) {
     return 5;
 }
 
-function getTotalOrderCost(baseCost, vipMember, loyaltyPoints, shipping) {
-    const shippingType = getShippedInternationally(shipping);
-    if (vipMember) {
-        return baseCost - getTheCostForVIPMember(baseCost) - getLoyaltyPointsDiscount(loyaltyPoints) + shippingType;
+function getTotalOrderCost(baseCost, isVipMember, loyaltyPoints, shippingType) {
+    const shippingCost = getShippedInternationally(shippingType);
+    if (isVipMember) {
+        return baseCost - getTheCostForVIPMember(baseCost) - getLoyaltyPointsDiscount(loyaltyPoints) + shippingCost;
     }
-    return baseCost - getLoyaltyPointsDiscount(loyaltyPoints) + shippingType;
+    return baseCost - getLoyaltyPointsDiscount(loyaltyPoints) + shippingCost;
 }
 
 console.log(getTotalOrderCost(100, '', 5,  'international'));
@@ -204,12 +204,14 @@ function getDiscountByNumberOfDays(daysNumber) {
 }
 
 function getTicketPrice(basePrice, daysUntilTheShow, weekendShows) {
-    const showOnTheWeekend = basePrice + 15;
-    const tenPercentDiscount = getDiscountByNumberOfDays(daysUntilTheShow) * basePrice;
+    const tenPercentDiscountOnBasePrice = getDiscountByNumberOfDays(daysUntilTheShow) * basePrice;
+    const basePriceAfterTenPercentDiscount = basePrice - tenPercentDiscountOnBasePrice;
+    const tenPercentDiscountOnFifteenDollarsCharged = 15 * getDiscountByNumberOfDays(daysUntilTheShow);
+    const fifteenDollarsChargedAfterTenPercentDiscount = 15 - tenPercentDiscountOnFifteenDollarsCharged;
     if (weekendShows) {
-        return showOnTheWeekend - tenPercentDiscount;
+        return basePriceAfterTenPercentDiscount + fifteenDollarsChargedAfterTenPercentDiscount;
     }
-    return basePrice - tenPercentDiscount;
+    return basePrice - tenPercentDiscountOnBasePrice;
 }
 
-console.log(getTicketPrice(100, 31, 'yes'));
+console.log(getTicketPrice(100, 20, false));
