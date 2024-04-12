@@ -203,15 +203,14 @@ function getDiscountByNumberOfDays(daysNumber) {
     return 0;
 }
 
-function getTicketPrice(basePrice, daysUntilTheShow, isWeekendShows) {
-    const tenPercentDiscountOnBasePrice = getDiscountByNumberOfDays(daysUntilTheShow) * basePrice;
-    const basePriceAfterTenPercentDiscount = basePrice - tenPercentDiscountOnBasePrice;
-    const tenPercentDiscountOnFifteenDollarsCharged = 15 * getDiscountByNumberOfDays(daysUntilTheShow);
-    const fifteenDollarsChargedAfterTenPercentDiscount = 15 - tenPercentDiscountOnFifteenDollarsCharged;
-    if (isWeekendShows) {
-        return basePriceAfterTenPercentDiscount + fifteenDollarsChargedAfterTenPercentDiscount;
+function getTicketPrice(basePrice, daysUntilTheShow, isWeekendShow) {
+    const additionalFeeForWeekendShow = 15;
+    const discountForBasePrice = basePrice * getDiscountByNumberOfDays(daysUntilTheShow);
+    const discountForWeekendShow = (basePrice + additionalFeeForWeekendShow) * getDiscountByNumberOfDays(daysUntilTheShow);
+    if (isWeekendShow) {
+        return basePrice + additionalFeeForWeekendShow - discountForWeekendShow;
     }
-    return basePrice - tenPercentDiscountOnBasePrice;
+    return basePrice - discountForBasePrice;
 }
 
-console.log(getTicketPrice(100, 20, false));
+console.log(getTicketPrice(100, 21, true));
