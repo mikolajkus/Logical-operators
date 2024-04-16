@@ -198,19 +198,20 @@ console.log(getTotalOrderCost(100, '', 5,  'international'));
 
 function getDiscountByNumberOfDays(daysNumber) {
     if (daysNumber > 30) {
-        return 0.10;
+        return 1 - 0.10;
+    }
+    return 0;
+}
+
+function isWeekendShowHappening(weekendShow) {
+    if (weekendShow === true) {
+        return 15;
     }
     return 0;
 }
 
 function getTicketPrice(basePrice, daysUntilTheShow, isWeekendShow) {
-    const additionalFeeForWeekendShow = 15;
-    const discountForBasePrice = basePrice * getDiscountByNumberOfDays(daysUntilTheShow);
-    const discountForWeekendShow = (basePrice + additionalFeeForWeekendShow) * getDiscountByNumberOfDays(daysUntilTheShow);
-    if (isWeekendShow) {
-        return basePrice + additionalFeeForWeekendShow - discountForWeekendShow;
-    }
-    return basePrice - discountForBasePrice;
+    return (basePrice + isWeekendShowHappening(isWeekendShow)) * getDiscountByNumberOfDays(daysUntilTheShow);
 }
 
 console.log(getTicketPrice(100, 21, true));
