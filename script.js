@@ -45,20 +45,12 @@ console.log(isTheFirstNumberCloseToTheSecondNumber(9,5, 0));
 // There will always be 2 values provided.
 
 function isOnlyOneOfThemTruthy(firstValue, secondValue) {
-    if (
-        (firstValue && !secondValue) ||
-        (!firstValue && secondValue)
-    ) {
-        return true;
-    }
-    return false;
+    return (firstValue && !secondValue) ||
+        (!firstValue && secondValue);
 }
 
 function isEitherOneOfThemTruthy(firstValue, secondValue) {
-    if (!firstValue && !secondValue) {
-        return false;
-    }
-    return true;
+    return !(!firstValue && !secondValue);
 }
 
 console.log(isOnlyOneOfThemTruthy("Bye"));
@@ -182,13 +174,25 @@ function getShippedInternationally(shippingType) {
 
 function getTotalOrderCost(baseCost, isVipMember, loyaltyPoints, shippingType) {
     const shippingCost = getShippedInternationally(shippingType);
-    if (isVipMember) {
-        return baseCost - getTheCostForVIPMember(baseCost) - getLoyaltyPointsDiscount(loyaltyPoints) + shippingCost;
+    let loyaltyPointsDiscount  = getLoyaltyPointsDiscount(loyaltyPoints);
+    if (loyaltyPointsDiscount > baseCost) {
+        loyaltyPointsDiscount = 0;
     }
-    return baseCost - getLoyaltyPointsDiscount(loyaltyPoints) + shippingCost;
+
+    let totalCost;
+    if (isVipMember) {
+        totalCost = baseCost - getTheCostForVIPMember(baseCost) - loyaltyPointsDiscount + shippingCost;
+    } else {
+        totalCost = baseCost - getLoyaltyPointsDiscount(loyaltyPoints) + shippingCost;
+    }
+
+    if (totalCost < 0) {
+        return 0;
+    }
+    return totalCost;
 }
 
-console.log(getTotalOrderCost(100, '', 5,  'international'));
+console.log(getTotalOrderCost(100, '', 15000,  'international'));
 
 // 11. Create the getTicketPrice function that returns the ticket price and accepts the following arguments:
 // - the base price of the ticket
@@ -200,10 +204,10 @@ function getDiscountByNumberOfDays(daysNumber) {
     if (daysNumber > 30) {
         return 1 - 0.10;
     }
-    return 0;
+    return 1;
 }
 
-function isWeekendShowHappening(weekendShow) {
+function getWeekendShowFee(weekendShow) {
     if (weekendShow === true) {
         return 15;
     }
@@ -211,7 +215,9 @@ function isWeekendShowHappening(weekendShow) {
 }
 
 function getTicketPrice(basePrice, daysUntilTheShow, isWeekendShow) {
-    return (basePrice + isWeekendShowHappening(isWeekendShow)) * getDiscountByNumberOfDays(daysUntilTheShow);
+    const weekendShowFee = getWeekendShowFee(isWeekendShow);
+    const discount = getDiscountByNumberOfDays(daysUntilTheShow);
+    return (basePrice + weekendShowFee) * discount;
 }
 
-console.log(getTicketPrice(100, 21, true));
+console.log(getTicketPrice(100, 31, true));
