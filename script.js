@@ -157,15 +157,15 @@ console.log(isValidPassword('Password123'));
 // - is the package going to be shipped internationally - shipping internationally costs $10 (otherwise, it costs $5)
 // Make sure to apply the VIP discount before the loyalty points. The VIP discount does not apply to shipping.
 
-function getVipMemberDiscount(vipMember) {
-    if (vipMember) {
+function getVipMemberDiscount(isVipMember) {
+    if (isVipMember) {
         return 0.95;
     }
     return 1;
 }
 
 function getLoyaltyPointsDiscount(points) {
-    return  points / 100;
+    return points / 100;
 }
 
 function getShippingFee(shippingType) {
@@ -175,8 +175,8 @@ function getShippingFee(shippingType) {
     return 5;
 }
 
-function getTotalOrderCost(baseCost, vipMember, loyaltyPoints, shippingType) {
-    const vipMemberDiscount = getVipMemberDiscount(vipMember);
+function getTotalOrderCost(baseCost, isVipMember, loyaltyPoints, shippingType) {
+    const vipMemberDiscount = getVipMemberDiscount(isVipMember);
     const shippingCost = getShippingFee(shippingType);
     const loyaltyPointsDiscount = getLoyaltyPointsDiscount(loyaltyPoints);
     const totalCost = baseCost * vipMemberDiscount - loyaltyPointsDiscount + shippingCost;
